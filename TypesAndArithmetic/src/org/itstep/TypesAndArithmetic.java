@@ -2,8 +2,8 @@ package org.itstep;
 
 public class TypesAndArithmetic {
     public static void main(String[] args) {
+        //ФУНДАМЕНТАЛЬНЫЕ (ПРИМИТИВНЫЕ) ТИПЫ
         if (false) {
-            //Примитивные типы
             byte b       = 0;        //1 байт
             short sh     = 0;        //2 байта
             int i        = 0;        //4 байта
@@ -13,6 +13,16 @@ public class TypesAndArithmetic {
             char ch      = '\u0000'; //2 байта символ
             boolean bool = false;    //? true false логический тип
             Object ref   = null;     //? ссылка
+        }
+
+        //Пределы числовых типов типов
+        if(false){
+            System.out.println("Byte: " + Byte.MAX_VALUE + " | " + Byte.MIN_VALUE);
+            System.out.println("Short: " + Short.MAX_VALUE + " | " + Short.MIN_VALUE);
+            System.out.println("Integer: " + Integer.MAX_VALUE + " | " + Integer.MIN_VALUE);
+            System.out.println("Long: " + Long.MAX_VALUE + " | " + Long.MIN_VALUE);
+            System.out.println("Float: " + Float.MAX_VALUE + " | " + Float.MIN_VALUE);
+            System.out.println("Double: " + Double.MAX_VALUE + " | " + Double.MIN_VALUE);
         }
 
         //Арифметика
@@ -58,42 +68,17 @@ public class TypesAndArithmetic {
             //System.out.println(a);
         }
 
-        //Пределы типов
-        if(false){
-            System.out.println("Byte: " + Byte.MAX_VALUE + " | " + Byte.MIN_VALUE);
-            System.out.println("Short: " + Short.MAX_VALUE + " | " + Short.MIN_VALUE);
-            System.out.println("Integer: " + Integer.MAX_VALUE + " | " + Integer.MIN_VALUE);
-            System.out.println("Long: " + Long.MAX_VALUE + " | " + Long.MIN_VALUE);
-            System.out.println("Float: " + Float.MAX_VALUE + " | " + Float.MIN_VALUE);
-            System.out.println("Double: " + Double.MAX_VALUE + " | " + Double.MIN_VALUE);
-        }
-
-        //final
-        if (false) {
-            int a = 3; //может менять значение
-            final int cv_a = a; //не может поменять значение
-            a = 5; //работает успешно!
-            //cv_a = 5; //ошибка компиляции!
-            System.out.println(a + " | " + cv_a);
-
-            int uninit;
-            //uninit += 3; //невозможно! переменная не имеет значения
-            int init = 2;
-            init += 3;
-            System.out.println(init); //5 = 2 + 3
-        }
-
         //Арифметические выражения
         if(false){
             int a = 2, b = 5;
             //арифметическое выражение вычисляется и результат попадает в c
-            int c = (a+b)*(a-b) + (b/b+a/a)*a*b + (b/b+a/a)*b*b; //Важно! Вычисления строгие, т.е. производятся там, где указаны
+            int c = (a+b)*(a-b) + (b/b+a/a)*a*b + (b/b+a/a)*b*b; //Помните: вычисления строгие, т.е. производятся там, где указаны
 
             System.out.println(c);
             a = 3; b = 2;
             System.out.println(c);
 
-            System.out.println((a+b)*(a-b) + (b/b+a/a)*a*b + (b/b+a/a)*b*b);
+            System.out.println((a+b)*(a-b) + (b/b+a/a)*a*b + (b/b+a/a)*b*b); //здесь вычисления производятся уже с новыми значениями a и b
         }
 
         //Хитрые выражения
