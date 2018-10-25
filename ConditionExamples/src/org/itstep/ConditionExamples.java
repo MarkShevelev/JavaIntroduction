@@ -70,7 +70,7 @@ public class ConditionExamples {
 
             //расчёт для третьего издательства аналогичен
             int price3 = 210*numberOfBooks;
-            if (price3 > 6000) {
+            if (price3 >= 6000) {
                 price3 = price3 - price3/5;
             }
             price3 += 30*numberOfBooks;
