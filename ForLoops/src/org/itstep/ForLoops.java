@@ -67,7 +67,7 @@ public class ForLoops {
         }
 
         //возведение числа типа double в целую положительную степень
-        if (true) {
+        if (false) {
             Scanner sc = new Scanner(System.in);
             double base = sc.nextDouble();
             int exp = sc.nextInt();
