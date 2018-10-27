@@ -276,7 +276,7 @@ public class Conditions {
             int res = 0; boolean good = true;
             switch (sc.next()) {
                 case "sum": res = a+b; break;
-                case "dif": res = a+b; break;
+                case "dif": res = a-b; break;
                 case "mul": res = a*b; break;
                 case "div": if (0 != b) res = a/b; else good = false; break;
                 default:
@@ -284,5 +284,13 @@ public class Conditions {
             }
             System.out.println(good?("Ваш результат: "+res):"Ошибка...");
         }
+
+        /**
+         * Множественный выбор может работать со следующими типами: byte, short, int,
+         * char, String (Java 7), enum (перечисления, определяемые пользователем).
+         * И с обёртками: Byte, Short, Integer, Character.
+         * 
+         * */
+
     }
 }
