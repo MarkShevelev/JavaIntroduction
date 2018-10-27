@@ -2,7 +2,7 @@ package org.itstep;
 
 import java.util.Scanner;
 
-public class Loops {
+public class WhileLoops {
     public static void main(String[] args) {
         //циклы (loops) нужны для совершения повторяющихся действий
         //цикл позволяет многократно проходить через одни и те же строки кода
@@ -139,6 +139,18 @@ public class Loops {
             }
 
             System.out.println("Сумма цифр = " + sum);
+        }
+
+        //вывод слова задом наперёд
+        if (true) {
+            Scanner sc = new Scanner(System.in);
+            String userString = sc.next();
+            int counter = userString.length(); //длиной строки инициализируем наш вариант
+            while (0 != counter) {
+                System.out.print(userString.charAt(counter-1)); //нумерация символов начинается с нуля, .length() - 1 -> номер последнего символа
+                --counter; //уменьшение варианта
+            }
+            System.out.println();
         }
     }
 }
