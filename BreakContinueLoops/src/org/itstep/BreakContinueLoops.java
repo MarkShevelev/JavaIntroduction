@@ -163,6 +163,59 @@ public class BreakContinueLoops {
             }
         }
 
-        
+        //break с отметкой также может использоваться для того, чтобы выйти из вложенного switch
+        if (false) {
+            Scanner sc = new Scanner(System.in);
+
+            main_loop:
+            do {
+                System.out.print("> ");
+                switch(sc.next()) {
+
+                    case "exit": {
+                        System.out.println("Good Bye!");
+                        break main_loop; //прерывает цикл, а не switch
+                    }
+
+                    case "hello": {
+                        System.out.println("Hello!");
+                        break; //прерывает switch, а н внешний цикл
+                    }
+
+                    default:
+                        System.out.println("Неизвестная команда");
+                }
+            } while(true);
+        }
+
+        //выводим трёхзначные числа в таблицу по 5
+        if (false) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Введите первое число и количество рядов: ");
+
+            int first = sc.nextInt();
+            int rows  = sc.nextInt();
+
+            all:
+            for (int cnt = 0, num = first; cnt < rows && num < 1000; ++cnt) {
+                switch(num%5) { //intentional fallthrough!!
+                    case 0:
+                        System.out.printf("%3d ",num++);
+                    case 1:
+                        System.out.printf("%3d ",num++);
+                    case 2:
+                        System.out.printf("%3d ",num++);
+                    case 3:
+                        System.out.printf("%3d ",num++);
+                    case 4:
+                        System.out.printf("%3d ",num++);
+                        System.out.println();
+                        break; //из switch (!)
+
+                    default: //недостижимый код
+                       break all; //выходим из цикла
+                }
+            }
+        }
     }
 }
