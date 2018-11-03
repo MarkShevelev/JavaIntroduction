@@ -84,7 +84,7 @@ public class BitwiseOperations {
         }
 
         //остаток от деления на степень двойки
-        if (true) {
+        if (false) {
             Scanner sc = new Scanner(System.in);
             System.out.println("Введите положительное число и степень: ");
             int userNum = sc.nextInt();
