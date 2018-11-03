@@ -46,6 +46,8 @@ public class BitwiseOperations {
 
             //специальная функция, создающая строку для двоичной записи числа
             System.out.println(Long.toBinaryString(userInput));
+            //с ведущими нулями
+            System.out.println( String.format("%64s",Long.toBinaryString(userInput)).replace(' ','0') );
         }
 
         //с помощью битовых операций можно компактно записывать данные, а затем раскодировать обратно
@@ -70,7 +72,7 @@ public class BitwiseOperations {
          * Битовые операции могут использоваться для создания более оптимальных алгоритмов при работе с числами
          * */
         //Задача: проверить, является ли число степенью двойки?
-        if (true) {
+        if (false) {
             Scanner sc = new Scanner(System.in);
             long userInput = sc.nextLong();
 
@@ -79,6 +81,36 @@ public class BitwiseOperations {
             //вычитание единицы приведёт к тому, что этот разряд станет нулём, а все младше него - единицами
             //побитовое перемножение даст ноль, т.к. старше этой единственной единицы ничего нет
             System.out.println(0 == (num&(num-1)) ? "Степень двойки":"Нет");
+        }
+
+        //остаток от деления на степень двойки
+        if (true) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Введите положительное число и степень: ");
+            int userNum = sc.nextInt();
+            int userExp = sc.nextInt();
+
+            System.out.println(userNum&(userExp-1));
+        }
+
+        //двоичное возведение в степень
+        if (false) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Введите основание и целую положительную степень: ");
+            double userBase = sc.nextDouble();
+            int userExp = sc.nextInt();
+
+            double res = 1.;
+            double base = userBase;
+            int exp = userExp;
+            while (exp != 1) {
+                if (1 == (exp&1))
+                    res *= base;
+                base *= base;
+                exp >>= 1;
+            }
+
+            System.out.println(res*base);
         }
 
         //операция ^ - исключающее или - eXcluding OR - XOR позволяет 'запоминать разность' между данными
@@ -141,9 +173,9 @@ public class BitwiseOperations {
 
             //дешифрование
             System.out.print("Дешифрация: ");
-            String cyper = builder.toString();
+            String cipher = builder.toString();
             for (int pos = 0; pos != userString.length(); ++pos)
-                System.out.print((char)(cyper.charAt(pos)^userKey.charAt(pos%userKey.length())));
+                System.out.print((char)(cipher.charAt(pos)^userKey.charAt(pos%userKey.length())));
             System.out.println();
         }
 
