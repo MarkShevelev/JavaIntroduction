@@ -83,5 +83,91 @@ public class ArraysEssential {
                 }
             }
         }
+        
+        //Разберём работу с массивом подробнее
+        if (false) {
+            int[] arr = null; //объявление ссылки на массив, ссылка не связана с памятью
+            
+            arr = new int[10]; //создание нового массива в памяти
+            for (int pos = 0; pos != 10; ++pos) //счёт индексов начинается с нуля
+                //в отличие от примитивных типов, массив создаётся уже инициализированным
+                //значениями по умолчанию, для int это 0
+                System.out.print(arr[pos] + " ");  //обращение к элементу массива через []
+            System.out.println();
+            
+            //запись значений в массив также можно осуществить через []
+            for (int pos = 0; pos != 10; ++pos)
+                arr[pos] = pos*pos;            
+            
+            //массив имеет фиксированную длину, в него нельзя добавлять элементы
+            //но можно создавать массивы любого неотрицательного размера
+            Scanner sc = new Scanner(System.in);
+            int userDefinedSize = sc.nextInt();
+            int[] userDefinedArray = new int[userDefinedSize];
+            
+            //отрицательный размер приведёт к аварийному завершению программы
+            //массив нулевого размера не содержит элементов
+            
+            //размер массива всегда можно узнать, используя dot syntax -> .length
+            for (int pos = 0; pos != userDefinedArray.length; ++pos)
+                userDefinedArray[pos] = pos*pos;
+            
+            for (int pos = userDefinedArray.length-1; pos >= 0; --pos)
+                System.out.println(pos + "*" + pos + " = " + userDefinedArray[pos]);
+            
+            //ссылка на массив также может быть переназначена, если она не объявлена final
+            userDefinedArray = new int[12]; //создаётся новый массив
+            for (int pos = 0; pos != userDefinedArray.length; ++pos)
+                System.out.print(userDefinedArray[pos] + " ");
+            System.out.println();
+            
+            final int[] finalArray = new int[5];
+            //finalArray = new int[10]; //ошибка компиляции
+            //хотя массив и final, его элементы можно менять через присваивание
+            for (int pos = 0; pos != finalArray.length; ++pos)
+                finalArray[pos] = pos*pos*pos;
+            for (int pos = 0; pos != finalArray.length; ++pos)
+                System.out.println(pos + "*" + pos + "*" + pos + " = " + finalArray[pos]);
+        }
+        
+        //специальный цикл обхода
+        if (false) {
+            int[] numbers = new int[10];
+            
+            //если массив не предполагается изменять в цикле, а только читать значения,
+            //то можно использовать специальный for для последовательностей
+            for (int x : numbers)
+                System.out.print(x+" ");
+            System.out.println();
+            
+            //однако при необходимости изменять элементы следует использовать обычный for
+            for (int pos = 0; pos != numbers.length; ++pos)
+                numbers[pos] = pos;
+            
+            for (int x : numbers)
+                System.out.print(x + " ");
+            System.out.println();
+        }
+        
+        //хитрое объявление
+        if (false) {
+            //Java позаимствовала из С интересный спобоб объявления массивов
+            int iVar, iArr[], anotherVar, anotherArr[];
+            //iVar и anotherVar - переменные типа int
+            //iArr и anonterArr - ссылки на массивы, хранящие наборы элементов типа int
+            iVar = anotherVar = 10;
+            iArr = anotherArr = new int[iVar];
+        }
+        
+        //массивы можно объявлять не только от примитивных типов, но и от объектов,
+        //например, строк
+        if (false) {
+            String[] words = null;
+            Scanner sc = new Scanner(System.in);
+            String userInput = sc.nextLine();
+            words = userInput.split(" ");
+            for (String w : words)
+                System.out.println(w + ": "+ w.length());
+        }
     }
 }
