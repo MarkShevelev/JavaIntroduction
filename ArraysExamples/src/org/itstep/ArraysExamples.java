@@ -141,26 +141,18 @@ public class ArraysExamples {
             System.out.println("Введите последовательность букв R G B из " + length + " символов: ");
             String rgbWord = sc.next();
             
-            char[] chars = new char[3];
-            chars[0] = 'R'; chars[1] = 'G'; chars[2] = 'B';
-            
+            char[] chars = new char[] {'R','G','B'};
             byte[] base = new byte[length];
             for (int pos = 0; pos != rgbWord.length(); ++pos)
                 for (byte i = 0; i != 3; ++i)
                     if (rgbWord.charAt(pos) == chars[i]) base[pos] = i;
             
-            byte[] transform = new byte[3];
-            transform[0] = 0; transform[1] = 2; transform[2] = 1;
-            for (int row = length-1; row >= 0; --row) {
-                /*for (int pos = 0; pos != row+1; ++pos)
-                    System.out.print(chars[base[pos]] + " ");
-                System.out.println();*/
-                
+            byte[] transform = {0,2,1};
+            for (int row = length-1; row >= 0; --row)
                 for (int pos = 0; pos != row; ++pos)
                     base[pos] = transform[(base[pos]+base[pos+1])%3];
-            }
-                    
-            System.out.println(base[0] + " ");
+
+            System.out.println(chars[base[0]]);
         }
     }
 }
