@@ -1,6 +1,5 @@
 package org.itstep;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArraysExamples {
@@ -228,7 +227,6 @@ public class ArraysExamples {
             //полный результат - максимум из конфет, набранных к последнему и предпоследнему островку
             long res = (sweetsCollected[numberOfStones-1] > sweetsCollected[numberOfStones-2] ? sweetsCollected[numberOfStones-1] : sweetsCollected[numberOfStones-2]);
             System.out.println("Наибольшее число конфет: " + res);
-            System.out.println(Arrays.toString(sweetsCollected));
         }
     }
 }
