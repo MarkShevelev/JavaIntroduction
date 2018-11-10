@@ -14,23 +14,23 @@ public class ArraysUtility {
         //заполнение массива
         if (false) {
             double[] data = new double[20]; //создаём массив с данным, заполненный значениями по умолчанию -> +0.d
-            for (double d : data) System.out.print(d + " ");
+            for (double d : data) System.out.printf("%.8f ", d);
             System.out.println();
 
             Arrays.fill(data,1.2); //заполнение массива числами 1.2
 
-            for (double d : data) System.out.print(d + " ");
+            for (double d : data) System.out.printf("%.8f ", d);
             System.out.println();
 
             Arrays.fill(data,10,20,-1.2); //заполнение части массива числами -1.2
 
-            for (double d : data) System.out.print(d + " ");
+            for (double d : data) System.out.printf("%.8f ", d);
             System.out.println();
 
             //Используя функцию из номера элемента в значение, можно установить элементы массива
             Arrays.setAll(data,i->3.5*i); //!!! Используется специальный синтаксис lambda !!!
 
-            for (double d : data) System.out.print(d + " ");
+            for (double d : data) System.out.printf("%.8f ", d);
             System.out.println();
         }
 
@@ -38,20 +38,20 @@ public class ArraysUtility {
         if (false) {
             double[] dataA = new double[10];
             Arrays.fill(dataA,3.5);
-            for (double d : dataA) System.out.print(d + " ");
+            for (double d : dataA) System.out.printf("%.8f ", d);
             System.out.println();
 
             double[] dataB = Arrays.copyOf(dataA,20);
-            for (double d : dataB) System.out.print(d + " ");
+            for (double d : dataB) System.out.printf("%.8f ", d);
             System.out.println();
 
             double[] dataC = Arrays.copyOfRange(dataB,0,10);
-            for (double d : dataC) System.out.print(d + " ");
+            for (double d : dataC) System.out.printf("%.8f ", d);
             System.out.println();
 
             //при необходимости получения полной копии удобнее использовать встроенный метод .clone()
             double[] dataD = dataA.clone();
-            for (double d : dataA) System.out.print(d + " ");
+            for (double d : dataA) System.out.printf("%.8f ", d);
             System.out.println();
         }
 
