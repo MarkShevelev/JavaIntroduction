@@ -129,6 +129,24 @@ public class ArraysEssential {
             for (int pos = 0; pos != finalArray.length; ++pos)
                 System.out.println(pos + "*" + pos + "*" + pos + " = " + finalArray[pos]);
         }
+
+        //объявление массива с инициализацией
+        if (false) {
+            int[] defaultInitArray = new int[10]; //массив инициализируется значениями по умолчанию int->0
+            int[] progerInitArray = {1,1,1,1,1,1,1,1,1,1}; //массив инициализируется значениями из указанного набора
+
+            //количество элементов в массиве с инициализацией выводится из количества элементов в наборе
+            int[] threeElementArray = {-1,0,1};
+            System.out.println(threeElementArray.length);
+
+            int[] fiveElementArray = {0,1,2,3,4};
+            System.out.println(fiveElementArray.length);
+
+            int[] sevenElementArray = null;
+            //инициализацию можно написать и при явном создании массива ключевым словом new
+            sevenElementArray = new int[] {6,5,4,3,2,1,0};
+            System.out.println(sevenElementArray.length);
+        }
         
         //специальный цикл обхода
         if (false) {
