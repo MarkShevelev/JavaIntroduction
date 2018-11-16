@@ -40,6 +40,38 @@ public class StaticMethods {
     }
 
     /**
+     * вызов метода является выражением, т.е. может быть приведён к значению
+     * для этого метод должен возвращать результат
+     * результат можно вернуть с помощью ключевого слова return
+     * */
+    //если метод возвращает результат, необходимо указать тип возвращаемого значения
+    public static long sum(long x, long y) {
+        return x+y; //return вычисляет выражение, которое стоит справа от него, результат вычислений и есть результат работы методы
+    }
+
+    //метод подсчитывает сумму цифр числа
+    public static long sumDigit(long n) {
+        n = n < 0 ? -n : n;
+        long sum = 0;
+        for (long num = n; num != 0; num /= 10) sum += num%10;
+        return sum;
+    }
+
+    //возвращаем различные значения в зависимости от условия
+    public static int choiceOperation(String choice, int x, int y) {
+        switch(choice) {
+            case "add":
+                return x+y;
+
+            case "mul":
+                return x*y;
+            //обратите внимание, что если убрать return в ветке default, то программа не будет компилироваться
+            default:
+                return 0;
+        }
+    }
+
+    /**
      * Немного терминологии
      * Метод - выделенный поименованный блок кода, котоый может быть исполнен как часть, команда, из другого кода
      * Сигнатура - название метода и набор его входящих параметров
@@ -83,6 +115,20 @@ public class StaticMethods {
             Scanner sc = new Scanner(System.in);
             double x = sc.nextDouble(), y = sc.nextDouble();
             System.out.printf("Длина гипотенузы равна %.4f"+System.lineSeparator() + hypot(x,y));
+        }
+
+        //используем функции, возвращающие значения
+        if (false) {
+            Scanner sc = new Scanner(System.in);
+            long userNum = sc.nextLong();
+            System.out.println( sumDigit(userNum) ); //вызов функции заменяет собой значение
+
+            //вызовы функций могут быть скомпонованы в сложное выражение
+            System.out.println( sumDigit( sum(userNum,userNum) ) );
+
+            //результат работы функции можно использовать и для инициализации переменной
+            long sumOfSums = sum( sum(userNum,userNum), sum(userNum,userNum) );
+            System.out.println(sumOfSums);
         }
     }
 }
