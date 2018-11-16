@@ -1,5 +1,7 @@
 package org.itstep;
 
+import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class ArraysExamples {
@@ -227,6 +229,62 @@ public class ArraysExamples {
             //полный результат - максимум из конфет, набранных к последнему и предпоследнему островку
             long res = (sweetsCollected[numberOfStones-1] > sweetsCollected[numberOfStones-2] ? sweetsCollected[numberOfStones-1] : sweetsCollected[numberOfStones-2]);
             System.out.println("Наибольшее число конфет: " + res);
+        }
+
+        /**
+         * Задача
+         * Дан массив целых чисел и опорное число
+         * Требуется найти пару чисел, которая в сумме даёт опорное число
+         * */
+        if (false) {
+            //начальное распределение случайно в интервале от -500 до +500
+            Random r = new Random();
+            int[] randomArray = new int[20];
+            for (int pos = 0; pos != randomArray.length; ++pos)
+                randomArray[pos] = r.nextInt(1000)-500;
+
+            //наглядный вывод элементов массива
+            for(int x : randomArray)
+                System.out.printf("%5d",x);
+            System.out.println();
+
+            //опорное число запрашиваем у пользователя
+            Scanner sc = new Scanner(System.in);
+            int pivot = sc.nextInt();
+
+            //наивный алгоритм состоит в том, чтобы перебирать все возможные пары элементов
+            //его сложность O(N*N)
+
+            //наивный алгоритм можно улучшить
+            //если из массива выбрать некое число X, то задача о существовании пары, дающей в сумме pivot, сводится
+            //к поиску в массиве числа pivot-X
+            //если массив был бы отсортирован, то поиск можно произвести не линейным, а бинарным поиском!
+
+            //Отсортируем массив
+            Arrays.sort(randomArray); //занимает O(N*logN) действий
+
+            int a = 0, b = 0;//искомые числа
+            boolean found = false; //флаг того, что числа найдены
+            //циклом перебираем числа
+            for (int pos =0; pos != randomArray.length-1; ++pos) { //повторяется N раз
+                int toFind = pivot - randomArray[pos]; //искомое число есть разность заданной суммы и текущего числа
+
+                //ищем число, равное разности, в части массива от текущего значения до конца массива
+                int posFound = Arrays.binarySearch(randomArray,pos+1,randomArray.length,toFind); //занимает O(logN)
+                //если индекс верный, то число найдено
+                if (posFound >=0 && posFound < randomArray.length) {
+                    a = randomArray[pos];
+                    b = randomArray[posFound];
+                    found = true;
+                    break;
+                }
+            }
+            //В сумме сложность алгоритма O(N*logN) + N*O(logN) -> O(N*logN), что значительно быстрее наивного алгоритма!
+
+            if (found)
+                System.out.println("Искомая пара: " + a + " + " + b + " = " + pivot);
+            else
+                System.out.println("Пары, дающей искомую сумму, не существует");
         }
     }
 }
