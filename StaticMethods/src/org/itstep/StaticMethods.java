@@ -141,6 +141,29 @@ public class StaticMethods {
         } while(true);
     }
 
+    //методы могут принимать массивы в качестве параметров
+    public static int findMax(int[] intArr) {
+        int max = intArr[0];
+        for (int x : intArr)
+            max = x > max ? x : max;
+        return max;
+    }
+
+    //... и возвращать массивы в качестве результата
+    public static int[] digits(long num) {
+        long n = 0;
+        int cnt = 0;
+        while (0 != num) { ++cnt; n = n*10 + num%10; num /= 10; }
+
+        int[] result = new int[cnt];
+        for (int i=0; i != cnt; ++i) {
+            result[i] = (int) n % 10;
+            n /= 10;
+        }
+
+        return result;
+    }
+
     /**
      * Демонстрируем работу методов
      * */
@@ -261,6 +284,19 @@ public class StaticMethods {
             builderToUppercase(builder);
             builderToUppercase(builder);
             System.out.println(builder); //последующие вызовы метода равносильны первому
+        }
+
+        //использование методо с массивами в качестве параметров и аргументов
+        if (false) {
+            int[] array = {1,3,-5,7,-3,0};
+            System.out.println( findMax(array) );
+
+            Scanner sc = new Scanner(System.in);
+            long num = sc.nextLong();
+            int[] ints = digits(num);
+            for (int i : ints)
+                System.out.print(i+" ");
+            System.out.println();
         }
     }
 }
