@@ -203,5 +203,25 @@ public class BitwiseOperations {
                 System.out.println();
             }
         }
+
+        /**
+         * Генерация случайных чисел с помощью битовых операциях
+         * */
+        if (false) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Введите начальное число: ");
+            long num = sc.nextLong();
+            System.out.println("Сколько чисел хотите сгенерировать: ");
+            int length = sc.nextInt();
+
+            long rnd = num;
+            for (int cnt = 0; cnt != length; ++cnt) {
+                rnd ^= (rnd << 21);
+                rnd ^= (rnd >>> 35);
+                rnd ^= (rnd << 4);
+                System.out.println(rnd + " ");
+            }
+            System.out.println();
+        }
     }
 }
